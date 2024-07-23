@@ -1,0 +1,26 @@
+import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.parameters.options.default
+import com.github.ajalt.clikt.parameters.options.help
+import com.github.ajalt.clikt.parameters.options.option
+import com.github.ajalt.clikt.parameters.options.prompt
+import com.github.ajalt.clikt.parameters.types.int
+
+
+
+class Hello : CliktCommand() {
+    val count: Int by option().int().default(1).help("Number of greetings")
+    val name: String by option().prompt("Your name").help("The person to greet")
+
+    override fun run() {
+        repeat(count) {
+            echo("Hello $name!")
+        }
+    }
+
+    fun ls() {
+//        val output = shellRun("git", listOf("rev-parse", "--abbrev-ref", "HEAD"))
+//        println(output) // Current branch name, e.g. master
+    }
+}
+
+fun main(args: Array<String>) = Hello().main(args)
